@@ -254,17 +254,19 @@ model.fit(x_train, y_train)
 
 # Paso 5.
 # Guarde el modelo como "files/models/model.pkl".
-
 import pickle
 import os
+import gzip
 
 models_dir = '../files/models'
 os.makedirs(models_dir, exist_ok=True)
 
-with open("../files/models/model.pkl","wb") as file:
-    pickle.dump(model,file)
+# Nombre del archivo comprimido
+compressed_model_path = "../files/models/model.pkl.gz"
 
-    
+
+with gzip.open(compressed_model_path, "wb") as file:
+    pickle.dump(model, file)
 
 
 # %%
